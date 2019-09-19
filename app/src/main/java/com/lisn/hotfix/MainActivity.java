@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -50,6 +51,8 @@ public class MainActivity extends BaseActivity {
         try {
             // 复制dex到私有目录
             FileUtils.copyFile(sourceFile, targetFile);
+            Log.e("---", "downloadPatch: "+targetFile.getAbsolutePath() );
+//            downloadPatch: /data/user/0/com.lisn.hotfix/app_hotfix/classes2.dex
             Toast.makeText(this, "Bug 修复成功!", Toast.LENGTH_SHORT).show();
             FixDexUtils.loadFixedDex(this);
         } catch (Exception e) {
